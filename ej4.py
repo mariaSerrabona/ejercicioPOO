@@ -30,3 +30,16 @@ class CuentaBancaria:
         IngresarDinero(num_cuenta2, dineroTransferido)
         return ('Dinero total transferido: '+str(dineroTransferido))
 
+
+
+class CuentaFija(CuentaBancaria):
+    #se crea un tipo de cuenta bancaria con todos los atibutos correspondientes
+    cantidadRetirar=10
+    num_cuenta=0
+    if(CuentaBancaria.RetirarDinero(num_cuenta, cantidadRetirar)==True):
+        dinero_restante
+        dinero_restante=CuentaBancaria.saldo-cantidadRetirar-(cantidadRetirar*0.05)
+
+
+    CuentaBancaria.RetirarDinero(num_cuenta, cantidadRetirar)
+
