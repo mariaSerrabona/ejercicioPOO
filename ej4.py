@@ -7,28 +7,28 @@ class CuentaBancaria:
     saldo=0    #int
 
 
-    def RetirarDinero(num_cuenta, cantidadRetirar):
+    def retirar_dinero(self, cantidad_retirar):
 
         # sacar una cantidad de dinero determinada
-        if saldo<cantidadRetirar:
+        if self.saldo<cantidad_retirar:
             return('No puedas sacar tanto dinero de tu cuenta porque no tienes saldo suficiente')
 
         else:
-            saldoRestante=saldo-cantidadRetirar
-            saldoRestante=str(saldoRestante)
-            return ('cantidad retirada, sus saldo restante es de: '+saldoRestante)
+            saldo_restante=self.saldo-cantidad_retirar
+            saldo_restante=str(saldo_restante)
+            return ('cantidad retirada, sus saldo restante es de: '+saldo_restante)
 
 
-    def IngresarDinero(num_cuenta, cantidadIngresar):
+    def ingresar_dinero(self , num_cuenta, cantidad_ingresar):
         #método de ingresar dinero, se pasa una cantidad por parámetro y se ingresa en la cuenta
-        saldoTotal=saldo+cantidadIngresar
-        return('Dinero ingresado. Tiene una cantidad total de: '+str(saldoTotal))
+        saldo_total=self.saldo+cantidad_ingresar
+        return('Dinero ingresado. Tiene una cantidad total de: '+str(saldo_total))
 
 
-    def TransferirDinero(num_cuenta1, num_cuenta2, dineroTransferido):
-        RetirarDinero(num_cuenta1, dineroTransferido )
-        IngresarDinero(num_cuenta2, dineroTransferido)
-        return ('Dinero total transferido: '+str(dineroTransferido))
+    def TransferirDinero(self, num_cuenta1, num_cuenta2, dinero_transferido):
+        retirar_dinero( num_cuenta1, dinero_transferido )
+        ingresar_dinero(num_cuenta2, dinero_transferido)
+        return ('Dinero total transferido: '+str(dinero_transferido))
 
 
 
@@ -36,10 +36,10 @@ class CuentaFija(CuentaBancaria):
     #se crea un tipo de cuenta bancaria con todos los atibutos correspondientes
     cantidadRetirar=10
     num_cuenta=0
-    if(CuentaBancaria.RetirarDinero(num_cuenta, cantidadRetirar)==True):
+    if(CuentaBancaria.retirar_dinero(num_cuenta, cantidad_retirar)==True):
         dinero_restante
-        dinero_restante=CuentaBancaria.saldo-cantidadRetirar-(cantidadRetirar*0.05)
+        dinero_restante=CuentaBancaria.saldo-cantidad_retirar-(cantidad_retirar*0.05)
 
 
-    CuentaBancaria.RetirarDinero(num_cuenta, cantidadRetirar)
+    CuentaBancaria.retirar_dinero(num_cuenta, cantidad_retirar)
 
