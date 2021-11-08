@@ -1,9 +1,11 @@
 # pylint: disable=too-many-arguments
+
+from datetime import date
 class CuentaBancaria:
 
     ID=0    #texto
     nombre_titular=0    #texto
-    fecha_apertura=0    #texto
+    fecha_apertura=date.datetime   #texto
     num_cuenta=0    #int
     saldo=0    #int
 
@@ -76,12 +78,26 @@ class CuentaBancaria:
 
 class CuentaFija(CuentaBancaria):
     #se crea un tipo de cuenta bancaria con todos los atibutos correspondientes
-    cantidadRetirar=10
-    num_cuenta=0
-    if(CuentaBancaria.retirar_dinero(num_cuenta, cantidad_retirar)==True):
-        dinero_restante
-        dinero_restante=CuentaBancaria.saldo-cantidad_retirar-(cantidad_retirar*0.05)
+    fecha_vencimiento=date
+    cantidad=0
+    #comparamos las fechas y si se cumple la condición, entonces cargaremos el 0.05 de la canttidad de penalizacion
+    if(fecha_vencimiento>date):
+        #habría que hacer lo mimso con las transferencias pero no se cómo ponerlo para que
+        #no me lo haga dos veces
+
+        #no se cómo poner al condición de que solo lo haga cuando saque dinero o haga una trasferencia
+        CuentaBancaria.retirar_dinero(cantidad)
+        dinero_retenido=cantidad*0.05
+        saldo_restante=CuentaBancaria.get_saldo()-(cantidad+dinero_retenido)
+        CuentaBancaria.set_saldo=saldo_restante
+
+    else:
+        CuentaBancaria.retirar_dinero(cantidad)
+        saldo_restante=CuentaBancaria.get_saldo()-cantidad
+        CuentaBancaria.set_saldo=saldo_restante
+
+class CuentaVip(CuentaBancaria):
+    
 
 
-    CuentaBancaria.retirar_dinero(num_cuenta, cantidad_retirar)
 
