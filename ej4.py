@@ -44,7 +44,7 @@ class CuentaBancaria:
         self._saldo=saldo
 
 
-    #a medida que retiramos el dinero, lo vamoa actualizando en a cuenta
+    #a medida que retiramos el dinero, lo vamos actualizando en a cuenta
     def retirar_dinero(self, cantidad_retirar):
         cantidad_retirar=int(cantidad_retirar)
         # sacar una cantidad de dinero determinada
