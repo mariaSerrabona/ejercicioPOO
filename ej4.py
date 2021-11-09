@@ -48,25 +48,25 @@ class CuentaBancaria:
     def retirar_dinero(self, cantidad_retirar):
         cantidad_retirar=int(cantidad_retirar)
         # sacar una cantidad de dinero determinada
-        if cantidad_retirar>CuentaBancaria.get_saldo:
+        if cantidad_retirar>CuentaBancaria.get_saldo():
             return('No puedas sacar tanto dinero de tu cuenta porque no tienes saldo suficiente')
 
         else:
-            saldo_restante=CuentaBancaria.get_saldo-cantidad_retirar
+            saldo_restante=CuentaBancaria.get_saldo()-cantidad_retirar
             saldo_restante=str(saldo_restante)
-            CuentaBancaria.set_saldo=saldo_restante
+            CuentaBancaria.set_saldo()=saldo_restante
             return ('cantidad retirada, sus saldo restante es de: '+saldo_restante)
 
     #a medida que ingresamos dinero, se lo vamos añadiente a la cuenta definida antes
     def ingresar_dinero(self , cantidad_ingresar):
         #método de ingresar dinero, se pasa una cantidad por parámetro y se ingresa en la cuenta
         saldo_total=CuentaBancaria.get_saldo()+cantidad_ingresar
-        CuentaBancaria.set_saldo=saldo_total
+        CuentaBancaria.set_saldo()=saldo_total
         return('Dinero ingresado. Tiene una cantidad total de: '+str(saldo_total))
 
 
     def transferir_dinero(self, cantidad_transferida, cuenta):
-        if int (cantidad_transferida)>CuentaBancaria.get_saldo:
+        if int (cantidad_transferida)>CuentaBancaria.get_saldo():
             return (' no se dispone de tanrto dinero en la cuenta como para poder trasnferirlo a otra cuenta')
         else:
             CuentaBancaria.retirar_dinero(cantidad_transferida)
@@ -89,12 +89,12 @@ class CuentaFija(CuentaBancaria):
         CuentaBancaria.retirar_dinero(cantidad)
         dinero_retenido=cantidad*0.05
         saldo_restante=CuentaBancaria.get_saldo()-(cantidad+dinero_retenido)
-        CuentaBancaria.set_saldo=saldo_restante
+        CuentaBancaria.set_saldo()=saldo_restante
 
     else:
         CuentaBancaria.retirar_dinero(cantidad)
         saldo_restante=CuentaBancaria.get_saldo()-cantidad
-        CuentaBancaria.set_saldo=saldo_restante
+        CuentaBancaria.set_saldo()=saldo_restante
 
 class CuentaVip(CuentaBancaria):
     #herega todos los atributos de la clase CuentaBancaria pero se le añade un nuevo atributo
