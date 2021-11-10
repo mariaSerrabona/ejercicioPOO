@@ -1,0 +1,19 @@
+from cuenta_bancaria import CuentaBancaria
+
+class CuentaVip(CuentaBancaria):
+    #herega todos los atributos de la clase CuentaBancaria pero se le añade un nuevo atributo
+    saldo_negativo_max=0
+    def retirar_dinero_vip(self, cantidad_retirar):
+        if cantidad_retirar> (CuentaVip.get_saldo()+saldo_negativo_max):
+            print('se ha excedido el límite de dinero para sacar')
+        else:
+            CuentaBancaria.set_saldo()=CuentaBancaria.get_saldo()-cantidad_retirar
+
+
+    def transferir_dinero_vip(self, cantidad_transferida, cuenta):
+        if int (cantidad_transferida)>(CuentaBancaria.get_saldo()+saldo_negativo_max):
+            print (' no se dispone de tanrto dinero en la cuenta como para poder trasnferirlo a otra cuenta')
+
+        else:
+            CuentaBancaria.retirar_dinero(cantidad_transferida)
+            cuenta.ingresar_dinero( cantidad_transferida)
