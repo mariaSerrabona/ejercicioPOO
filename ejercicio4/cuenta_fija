@@ -1,0 +1,21 @@
+from cuenta_bancaria import CuentaBancaria
+
+class CuentaFija(CuentaBancaria):
+    #se crea un tipo de cuenta bancaria con todos los atibutos correspondientes
+    fecha_vencimiento=date
+    cantidad=0
+    #comparamos las fechas y si se cumple la condición, entonces cargaremos el 0.05 de la canttidad de penalizacion
+    if(fecha_vencimiento>date):
+        #habría que hacer lo mimso con las transferencias pero no se cómo ponerlo para que
+        #no me lo haga dos veces
+
+        #no se cómo poner al condición de que solo lo haga cuando saque dinero o haga una trasferencia
+        CuentaBancaria.retirar_dinero(cantidad)
+        dinero_retenido=cantidad*0.05
+        saldo_restante=CuentaBancaria.get_saldo()-(cantidad+dinero_retenido)
+        CuentaBancaria.set_saldo()=saldo_restante
+
+    else:
+        CuentaBancaria.retirar_dinero(cantidad)
+        saldo_restante=CuentaBancaria.get_saldo()-cantidad
+        CuentaBancaria.set_saldo()=saldo_restante
