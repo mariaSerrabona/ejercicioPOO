@@ -1,11 +1,12 @@
 # pylint: disable=too-many-arguments
 
 from datetime import date
+import random
 class CuentaBancaria:
 
     ID=0    #texto
     nombre_titular=''   #texto
-    fecha_apertura=date.datetime   #texto
+    fecha_apertura=date.today()   #texto
     num_cuenta=0    #int
     saldo=0    #int
 
@@ -53,32 +54,33 @@ class CuentaBancaria:
 
         else:
             saldo_restante=CuentaBancaria.get_saldo()-cantidad_retirar
+            CuentaBancaria.set_saldo()==saldo_restante
             saldo_restante=str(saldo_restante)
-            CuentaBancaria.set_saldo()=saldo_restante
             return ('cantidad retirada, sus saldo restante es de: '+saldo_restante)
 
     #a medida que ingresamos dinero, se lo vamos añadiente a la cuenta definida antes
     def ingresar_dinero(self , cantidad_ingresar):
         #método de ingresar dinero, se pasa una cantidad por parámetro y se ingresa en la cuenta
         saldo_total=CuentaBancaria.get_saldo()+cantidad_ingresar
-        CuentaBancaria.set_saldo()=saldo_total
+        CuentaBancaria.set_saldo()==saldo_total
         return('Dinero ingresado. Tiene una cantidad total de: '+str(saldo_total))
 
-    def CrearCuentas():
+    def CrearCuentas():#ID, nombre_titular,fecha_apertura, num_cuenta, sald
         #rellenar los datos con el input de la cuentas bancarias
         #ahcer esto con todos los atributos
-        id=input('introduzca el id')
+        ID=input('Introduzca el id')
         try:
-            id=int(id)
+            ID=int(ID)
         except ValueError:
-            print('error de valor, se necesita poner un número entero')
-
-
-        nombre_titular=input('introduzca el nombre dle titular')
-        fecha_apertura=input('introduzca la fecha de apertura de la cuenta')
-        num_cuenta=input('introduzca el número de la cuenta')
-        id=input('introduzca el id')
-        id=input('introduzca el id')
+            print('Error de valor, se necesita poner un número entero')
+        nombre_titular=input('Introduzca el nombre del titular')
+        fecha_apertura=input('Introduzca la fecha de apertura')
+        num_cuenta=input('Introduzca el número de cuenta')
+        try:
+            num_cuenta=int(num_cuenta)
+        except ValueError:
+            print('Error de valor, se necesita poner un número entero')
+        saldo=input('Introduzca el saldo actual de la cuenta')
 
     def transferir_dinero(self, cantidad_transferida, cuenta):
         if int (cantidad_transferida)>CuentaBancaria.get_saldo():
@@ -92,24 +94,30 @@ class CuentaBancaria:
 
 
 class CuentaFija(CuentaBancaria):
+
+    #generamos una fecha aleatoria que será la fecha de vencimiento
+    def fecha_vencimiento():
+        dia=str(random.randint(0,30))
+        mes=str(random.randint(0,12))
+        año=str(random.randint(2021,2030))
+        return (dia+'/'+mes+'/'+año)
     #se crea un tipo de cuenta bancaria con todos los atibutos correspondientes
-    fecha_vencimiento=date
+    fecha_vencimiento=fecha_vencimiento()
     cantidad=0
     #comparamos las fechas y si se cumple la condición, entonces cargaremos el 0.05 de la canttidad de penalizacion
-    if(fecha_vencimiento>date):
-        #habría que hacer lo mimso con las transferencias pero no se cómo ponerlo para que
-        #no me lo haga dos veces
 
-        #no se cómo poner al condición de que solo lo haga cuando saque dinero o haga una trasferencia
-        CuentaBancaria.retirar_dinero(cantidad)
+    def retirar_dinero(self, cantidad_retirar):
+        return super().retirar_dinero(cantidad_retirar)
+    if(fecha_vencimiento>str(date.today)):
         dinero_retenido=cantidad*0.05
+        print('Se han cobrado intereses de un total de: '+dinero_retenido)
         saldo_restante=CuentaBancaria.get_saldo()-(cantidad+dinero_retenido)
-        CuentaBancaria.set_saldo()=saldo_restante
+        CuentaBancaria.set_saldo()==saldo_restante
+        print('se ha retirado un total de: '+ cantidad+ 'saldo restante en la cuenta: '+  saldo_restante)
 
     else:
-        CuentaBancaria.retirar_dinero(cantidad)
-        saldo_restante=CuentaBancaria.get_saldo()-cantidad
-        CuentaBancaria.set_saldo()=saldo_restante
+        def retirar_dinero(self, cantidad_retirar):
+            return super().retirar_dinero(cantidad_retirar)
 
 class CuentaVip(CuentaBancaria):
     #herega todos los atributos de la clase CuentaBancaria pero se le añade un nuevo atributo
@@ -118,7 +126,7 @@ class CuentaVip(CuentaBancaria):
         if cantidad_retirar> (CuentaVip.get_saldo()+saldo_negativo_max):
             print('se ha excedido el límite de dinero para sacar')
         else:
-            CuentaBancaria.set_saldo()=CuentaBancaria.get_saldo()-cantidad_retirar
+            CuentaBancaria.set_saldo()==CuentaBancaria.get_saldo()-cantidad_retirar
 
 
     def transferir_dinero_vip(self, cantidad_transferida, cuenta):
