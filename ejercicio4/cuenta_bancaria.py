@@ -49,20 +49,20 @@ class CuentaBancaria:
     def retirar_dinero(self, cantidad_retirar):
         cantidad_retirar=int(cantidad_retirar)
         # sacar una cantidad de dinero determinada
-        if cantidad_retirar>CuentaBancaria.get_saldo():
+        if cantidad_retirar>self.get_saldo():
             return('No puedas sacar tanto dinero de tu cuenta porque no tienes saldo suficiente')
 
         else:
-            saldo_restante=CuentaBancaria.get_saldo()-cantidad_retirar
-            CuentaBancaria.set_saldo()==saldo_restante
+            saldo_restante=self.get_saldo()-cantidad_retirar
+            self.set_saldo()=saldo_restante
             saldo_restante=str(saldo_restante)
             return ('cantidad retirada, sus saldo restante es de: '+saldo_restante)
 
     #a medida que ingresamos dinero, se lo vamos añadiente a la cuenta definida antes
     def ingresar_dinero(self , cantidad_ingresar):
         #método de ingresar dinero, se pasa una cantidad por parámetro y se ingresa en la cuenta
-        saldo_total=CuentaBancaria.get_saldo()+cantidad_ingresar
-        CuentaBancaria.set_saldo()==saldo_total
+        saldo_total=self.get_saldo()+cantidad_ingresar
+        self.set_saldo()==saldo_total
         return('Dinero ingresado. Tiene una cantidad total de: '+str(saldo_total))
 
     def CrearCuentas():#ID, nombre_titular,fecha_apertura, num_cuenta, sald
@@ -83,60 +83,11 @@ class CuentaBancaria:
         saldo=input('Introduzca el saldo actual de la cuenta')
 
     def transferir_dinero(self, cantidad_transferida, cuenta):
-        if int (cantidad_transferida)>CuentaBancaria.get_saldo():
+        if int (cantidad_transferida)>self.get_saldo():
             return (' no se dispone de tanrto dinero en la cuenta como para poder trasnferirlo a otra cuenta')
         else:
-            CuentaBancaria.retirar_dinero(cantidad_transferida)
+            self.retirar_dinero(cantidad_transferida)
             cuenta.ingresar_dinero( cantidad_transferida)
 
         return ('Dinero total transferido: '+str(cantidad_transferida))
-
-
-
-class CuentaFija(CuentaBancaria):
-
-    #generamos una fecha aleatoria que será la fecha de vencimiento
-    def fecha_vencimiento():
-        dia=str(random.randint(0,30))
-        mes=str(random.randint(0,12))
-        año=str(random.randint(2021,2030))
-        return (dia+'/'+mes+'/'+año)
-    #se crea un tipo de cuenta bancaria con todos los atibutos correspondientes
-    fecha_vencimiento=fecha_vencimiento()
-    cantidad=0
-    #comparamos las fechas y si se cumple la condición, entonces cargaremos el 0.05 de la canttidad de penalizacion
-
-    def retirar_dinero(self, cantidad_retirar):
-        return super().retirar_dinero(cantidad_retirar)
-    if(fecha_vencimiento>str(date.today)):
-        dinero_retenido=cantidad*0.05
-        print('Se han cobrado intereses de un total de: '+dinero_retenido)
-        saldo_restante=CuentaBancaria.get_saldo()-(cantidad+dinero_retenido)
-        CuentaBancaria.set_saldo()==saldo_restante
-        print('se ha retirado un total de: '+ cantidad+ 'saldo restante en la cuenta: '+  saldo_restante)
-
-    else:
-        def retirar_dinero(self, cantidad_retirar):
-            return super().retirar_dinero(cantidad_retirar)
-
-class CuentaVip(CuentaBancaria):
-    #herega todos los atributos de la clase CuentaBancaria pero se le añade un nuevo atributo
-    saldo_negativo_max=0
-    def retirar_dinero_vip(self, cantidad_retirar):
-        if cantidad_retirar> (CuentaVip.get_saldo()+saldo_negativo_max):
-            print('se ha excedido el límite de dinero para sacar')
-        else:
-            CuentaBancaria.set_saldo()==CuentaBancaria.get_saldo()-cantidad_retirar
-
-
-    def transferir_dinero_vip(self, cantidad_transferida, cuenta):
-        if int (cantidad_transferida)>(CuentaBancaria.get_saldo()+saldo_negativo_max):
-            print (' no se dispone de tanrto dinero en la cuenta como para poder trasnferirlo a otra cuenta')
-
-        else:
-            CuentaBancaria.retirar_dinero(cantidad_transferida)
-            cuenta.ingresar_dinero( cantidad_transferida)
-
-
-
 
