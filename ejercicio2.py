@@ -53,7 +53,7 @@ class doubly_linked_list:
 
     #de este modo, cada vez que se llame al método, entrarán los valores por el final de la lista
 
-    def get_prev(self), value:
+    def get_prev(self, value):
         return self.value.prev
 
     def remove (self):      #eliminamos un dato el principio de la lista
